@@ -187,7 +187,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The recent dislosure of the Tesla Powerwall home battery has entailed high expectations in the energy field. Many observers predict an uptake of such PV/Battery units, which could ultimately disconnect from the grid and lead to totally autonomous home or minigrid systems. The goal of this notebook is to evaluate the profitability and potential of the 7 kWh Tesla battery in the Belgian system under different hypotheses.</p>
-<p>For the sake of openness, the selected format is the open-source Ipython Notebook format, which allows to easily follow and check all calculations and hypotheses. The input data is public data and is also made available through csv files. The original ipynb file can be downloaded here and allows further reuse/modification/adaptation of the notebook: <a href="http://www.labothap.ulg.ac.be/notebooks/battery_storage/Home_Batteries.ipynb">http://www.labothap.ulg.ac.be/notebooks/battery_storage/Home_Batteries.ipynb</a></p>
+<p>For the sake of openness, the selected format is the open-source Ipython Notebook format, which allows to easily follow and check all calculations and hypotheses. The input data is public data and is also made available through csv files. The original ipynb file can be downloaded here and allows further reuse/modification/adaptation of the notebook: <a href="http://squoilin.github.io/home_batteries/Home_Batteries.ipynb">http://squoilin.github.io/home_batteries/Home_Batteries.ipynb</a></p>
 <p>Sylvain Quoilin</p>
 <p>Researcher at the European Commission (JRC).</p>
 <p>E-mail: sylvain.quoilin@ec.europa.eu - Twitter: @squoilin</p>
@@ -218,7 +218,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -245,11 +245,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span> <span class="p">(</span><span class="s">&quot;http://www.labothap.ulg.ac.be/notebooks/battery_storage/solar_data.csv&quot;</span><span class="p">,</span> <span class="s">&quot;solar_data.csv&quot;</span><span class="p">)</span>
-<span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span> <span class="p">(</span><span class="s">&quot;http://www.labothap.ulg.ac.be/notebooks/battery_storage/demand.csv&quot;</span><span class="p">,</span> <span class="s">&quot;demand.csv&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span> <span class="p">(</span><span class="s">&quot;http://squoilin.github.io/home_batteries/solar_data.csv&quot;</span><span class="p">,</span> <span class="s">&quot;solar_data.csv&quot;</span><span class="p">)</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span> <span class="p">(</span><span class="s">&quot;http://squoilin.github.io/home_batteries/demand.csv&quot;</span><span class="p">,</span> <span class="s">&quot;demand.csv&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -260,11 +260,11 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(&apos;demand.csv&apos;, &lt;httplib.HTTPMessage instance at 0x7f93b13e65f0&gt;)</pre>
+<pre>(&apos;demand.csv&apos;, &lt;httplib.HTTPMessage instance at 0x7fcfd020f7a0&gt;)</pre>
 </div>
 
 </div>
@@ -286,7 +286,7 @@ The value of interest is the 15-min availability factor of solar PV. It is obtai
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">solar_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;solar_data.csv&#39;</span><span class="p">)</span>
@@ -306,11 +306,11 @@ The value of interest is the 15-min availability factor of solar PV. It is obtai
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x7f939b783ad0&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x7fcfbb783610&gt;</pre>
 </div>
 
 </div>
@@ -2041,7 +2041,7 @@ data timestep is 15 min, the units are kWh.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">load_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;demand.csv&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span>
@@ -2062,11 +2062,11 @@ data timestep is 15 min, the units are kWh.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x7f93b17da810&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x7fcfbb6e9590&gt;</pre>
 </div>
 
 </div>
@@ -2801,7 +2801,7 @@ CCGEBPl/qSqthwe4Y6oAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -2830,11 +2830,11 @@ CCGEBPl/qSqthwe4Y6oAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.collections.PolyCollection at 0x7f93b16faed0&gt;</pre>
+<pre>&lt;matplotlib.collections.PolyCollection at 0x7fcfbb616c10&gt;</pre>
 </div>
 
 </div>
@@ -4279,7 +4279,7 @@ RERERERERETKUMFIRERERERERETKUMFIRERERERERETK+H9lSokgwtMKLAAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">BatteryCapacity</span> <span class="o">=</span> <span class="mi">7</span> <span class="c"># kWh</span>
@@ -4309,7 +4309,7 @@ RERERERERETKUMFIRERERERERETKUMFIRERERERERETK+H9lSokgwtMKLAAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">PVPower</span> <span class="o">=</span> <span class="mi">5</span>   <span class="c"># kW</span>
@@ -4344,10 +4344,10 @@ It is assumed that demand is not responsive.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span> <span class="p">(</span><span class="s">&quot;http://www.labothap.ulg.ac.be/notebooks/battery_storage/system.png&quot;</span><span class="p">,</span> <span class="s">&quot;system.png&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span> <span class="p">(</span><span class="s">&quot;http://squoilin.github.io/home_batteries/system.png&quot;</span><span class="p">,</span> <span class="s">&quot;system.png&quot;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;system.png&#39;</span><span class="p">)</span>
 </pre></div>
@@ -4360,7 +4360,7 @@ It is assumed that demand is not responsive.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
 
 
 <div class="output_png output_subarea output_execute_result">
@@ -4951,7 +4951,7 @@ QohP2P8Awtn1JAfJ0fgAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Yearly simulation is put in a function so that we can call it back later:</span>
@@ -5002,7 +5002,7 @@ QohP2P8Awtn1JAfJ0fgAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -6966,7 +6966,7 @@ KgSRFAgEAoFAIBAIBAKBQCAQqEIQSYFAIBAIBAKBQCAQCAQCgSoEkRQIBAKBQCAQCAQCgUAgEKjC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">TotalFromGrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">EnergyFromGrid</span><span class="p">)</span>
@@ -7048,7 +7048,7 @@ Total inverter losses: 197.415075899 kWh
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">YearlyPayment</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pmt</span><span class="p">(</span><span class="n">InterestRate</span><span class="p">,</span> <span class="n">BatteryLifetime</span><span class="p">,</span> <span class="n">BatteryCost</span><span class="o">+</span><span class="n">InstallationCost</span><span class="p">)</span>
@@ -7086,7 +7086,7 @@ Total inverter losses: 197.415075899 kWh
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Number of runs:</span>
@@ -7148,7 +7148,7 @@ Total inverter losses: 197.415075899 kWh
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="kn">import</span> <span class="n">host_subplot</span>
@@ -7202,11 +7202,11 @@ Total inverter losses: 197.415075899 kWh
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[28]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x7f939b7346d0&gt;</pre>
+<pre>&lt;matplotlib.text.Text at 0x7fcfbb34a110&gt;</pre>
 </div>
 
 </div>
