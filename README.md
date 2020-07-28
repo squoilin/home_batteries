@@ -33,3 +33,5 @@ In the incentivized self-consumption scheme, battery becomes competitive if one 
 
 In conclusion, there does not seem to be a business case (yet) for the Tesla battery in the current Belgian context, especially under the net-metering framework. To make it profitable, incentives should be provided for self-consumption, such as high difference between the electricity bought and sold from and to the grid. From a system point of view, such incentives should be put in balance with alternative means to smooth out the variations of PV power in a centralized way.
 
+![Main results](SCR2.png?raw=true "Main results")
+
